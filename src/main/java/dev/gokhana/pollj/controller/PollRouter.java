@@ -9,12 +9,15 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
 public class PollRouter {
+
+    private final static String apiPrefix = "/api/polls";
+
     @Bean
     public RouterFunction<ServerResponse> functionalRoutes(PollHandler pollHandler) {
         return RouterFunctions
-                .route(RequestPredicates.GET("/functional/mono")
-                        , pollHandler::getPolls)
-                .andRoute(RequestPredicates.GET("functional/flux")
-                        , pollHandler::fluxMessage);
+                .route(RequestPredicates.GET(apiPrefix), pollHandler::getPolls)
+                .andRoute(RequestPredicates.GET(apiPrefix + "/{id}"), pollHandler::getPollById)
+                .andRoute(RequestPredicates.POST(apiPrefix), pollHandler::createPoll)
+                .andRoute(RequestPredicates.GET(apiPrefix + "/{pollId}/votes"), pollHandler::castVote);
     }
 }

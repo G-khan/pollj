@@ -1,7 +1,5 @@
 package dev.gokhana.pollj.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
@@ -14,6 +12,14 @@ import java.time.Duration;
 @Component
 public class PollHandler {
 
+    public Mono<ServerResponse> getPollById(ServerRequest request) {
+        return ServerResponse.ok()
+                .contentType(MediaType.TEXT_PLAIN)
+                .body(
+                        Mono.just("Welcome to pollJ"), String.class
+                );
+    }
+
     public Mono<ServerResponse> getPolls(ServerRequest request) {
         return ServerResponse.ok()
                 .contentType(MediaType.TEXT_PLAIN)
@@ -21,10 +27,16 @@ public class PollHandler {
                         Mono.just("Welcome to pollJ"), String.class
                 );
     }
-    /**
-     * Serves a JSON stream
-     */
-    public Mono<ServerResponse> fluxMessage(ServerRequest request) {
+
+    public Mono<ServerResponse> castVote(ServerRequest request) {
+        return ServerResponse.ok()
+                .contentType(MediaType.TEXT_PLAIN)
+                .body(
+                        Mono.just("Welcome to pollJ"), String.class
+                );
+    }
+
+    public Mono<ServerResponse> createPoll(ServerRequest request) {
         return ServerResponse.ok()
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(
