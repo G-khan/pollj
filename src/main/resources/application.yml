@@ -6,3 +6,10 @@ spring:
           github:
             client-id: f62721521fac286ba8b9
             client-secret: f31f18a6e83d20ebbc803878aa2d712ecebd45cc
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres?schema=public
+    username: postgres
+    password: postgres
+logging:
+  level:
+    root: DEBUG

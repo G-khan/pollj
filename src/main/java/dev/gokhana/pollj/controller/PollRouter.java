@@ -10,7 +10,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 @Configuration
 public class PollRouter {
 
-    private final static String apiPrefix = "/api/polls";
+    private final static String apiPrefix = "/api/pollj";
 
     @Bean
     public RouterFunction<ServerResponse> functionalRoutes(PollHandler pollHandler) {

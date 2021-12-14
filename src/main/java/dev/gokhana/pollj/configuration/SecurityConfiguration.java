@@ -18,6 +18,7 @@ public class SecurityConfiguration {
                 )
                 .oauth2Login(withDefaults())
                 .oauth2Client(withDefaults())
+                .csrf().disable()
                 .build();
     }
 }
